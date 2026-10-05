@@ -102,7 +102,6 @@ p { margin: 0 0 1em; }
 /* Sections */
 .section { padding: 5rem 0; }
 .section-alt { background: var(--bg-alt); }
-.section-dark { background: var(--navy); color: #fff; }
 .section-head { text-align: center; max-width: 700px; margin: 0 auto 3rem; }
 .section-head .sub { margin-inline: auto; }
 
@@ -134,12 +133,7 @@ p { margin: 0 0 1em; }
 .area-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
 
 /* Form */
-.form-wrap { display: grid; grid-template-columns: 1fr 1.6fr; gap: 3rem; align-items: start; }
-.form-intro p { color: #cfdcf0; }
-.form-intro a { color: #fff; font-weight: 600; text-decoration: underline; }
-.hours { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.18); }
-.hours h4 { color: #9fc0f0; }
-.form { background: #fff; color: var(--ink); border-radius: var(--radius); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
+.form { background: #fff; color: var(--ink); }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .field { margin-bottom: 1rem; }
 .field label, .items legend { display: block; font-weight: 600; font-size: 0.88rem; margin-bottom: 0.35rem; }
@@ -167,19 +161,37 @@ p { margin: 0 0 1em; }
 .form-msg.err { color: #d14343; }
 .form .btn-lg { width: 100%; margin-top: 0.5rem; }
 
-/* FAQ */
-.faq details { border-bottom: 1px solid var(--line); padding: 0.4rem 0; }
-.faq summary {
-  cursor: pointer; font-family: var(--font-head); font-weight: 700; padding: 0.9rem 2rem 0.9rem 0;
-  list-style: none; position: relative;
+/* Modal */
+.modal { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 1.5rem; }
+.modal[hidden] { display: none; }
+.modal-backdrop { position: absolute; inset: 0; background: rgba(9, 42, 87, 0.6); backdrop-filter: blur(3px); animation: fade .18s ease; }
+.modal-dialog {
+  position: relative; background: #fff; border-radius: var(--radius);
+  width: min(720px, 100%); max-height: calc(100vh - 3rem); overflow-y: auto;
+  padding: 2rem; box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+  animation: pop .2s ease;
 }
-.faq summary::-webkit-details-marker { display: none; }
-.faq summary::after {
-  content: "+"; position: absolute; right: 0.2rem; top: 50%; transform: translateY(-50%);
-  font-size: 1.4rem; color: var(--navy); font-weight: 400;
+@keyframes fade { from { opacity: 0; } }
+@keyframes pop { from { opacity: 0; transform: translateY(12px); } }
+.modal-close {
+  position: absolute; top: 0.9rem; right: 1rem; background: none; border: 0;
+  font-size: 1.9rem; line-height: 1; color: var(--muted); cursor: pointer; padding: 0.2rem 0.5rem;
+  border-radius: 8px;
 }
-.faq details[open] summary::after { content: "–"; }
-.faq details p { color: var(--muted); margin: 0 0 1rem; }
+.modal-close:hover { background: var(--bg-alt); color: var(--ink); }
+.modal-head { margin-bottom: 1.5rem; padding-right: 2.5rem; }
+.modal-head h2 { margin-bottom: 0.4rem; }
+.modal-head p { color: var(--muted); font-size: 0.95rem; margin: 0 0 0.4rem; }
+.modal-head a { font-weight: 600; }
+.modal-hours { font-size: 0.85rem !important; color: var(--navy) !important; font-weight: 600; }
+body.modal-open { overflow: hidden; }
+
+/* Link-styled button */
+.link-btn {
+  background: none; border: 0; padding: 0; font: inherit; color: #cfdcf0;
+  cursor: pointer; text-align: left;
+}
+.link-btn:hover { color: #fff; }
 
 /* CTA */
 .cta { background: var(--bg-alt); padding: 4.5rem 0; text-align: center; }
@@ -203,7 +215,7 @@ p { margin: 0 0 1em; }
   .cards { grid-template-columns: repeat(2, 1fr); }
   .card-wide { grid-column: span 2; }
   .steps { grid-template-columns: 1fr; }
-  .hero-inner, .area-inner, .form-wrap { grid-template-columns: 1fr; }
+  .hero-inner, .area-inner { grid-template-columns: 1fr; }
   .hero-visual { order: -1; }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
@@ -224,7 +236,8 @@ p { margin: 0 0 1em; }
   .card-wide { grid-column: span 1; grid-template-columns: 1fr; }
   .card-wide .card-img { border-radius: var(--radius) var(--radius) 0 0; border-right: 2px dashed #b9c7dd; border-bottom: 0; aspect-ratio: 4/3; }
   .row { grid-template-columns: 1fr; gap: 0; }
-  .form { padding: 1.4rem; }
+  .modal { padding: 0; place-items: stretch; }
+  .modal-dialog { max-height: 100vh; height: 100%; width: 100%; border-radius: 0; padding: 1.4rem; }
   .footer-inner { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; }
 }
