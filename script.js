@@ -1,3 +1,59 @@
+
+// Party planner
+(function () {
+  const range = document.getElementById('guestRange');
+  if (!range) return;
+  const out = document.getElementById('guestOut');
+  const list = document.getElementById('plannerList');
+  const note = document.getElementById('plannerNote');
+  const tent = document.getElementById('plannerTent');
+  const styleRadios = document.querySelectorAll('input[name="tableStyle"]');
+  let plan = {};
+
+  function calc() {
+    const guests = +range.value;
+    const round = document.querySelector('input[name="tableStyle"]:checked').value === 'round';
+    const tables = Math.ceil(guests / (round ? 8 : 6));
+    plan = { guests, chairs: guests, tables, round, tent: tent.checked };
+    out.textContent = guests;
+    range.setAttribute('aria-valuetext', guests + ' guests');
+    const rows = [
+      ['White resin chairs', guests],
+      [round ? '60" round tables' : '6-ft banquet tables', tables]
+    ];
+    if (tent.checked) rows.push(['32 × 20 ft tent', 1]);
+    list.innerHTML = rows.map(r => '<li><span>' + r[0] + '</span><strong>' + r[1] + '</strong></li>').join('');
+    let text = 'Estimate based on ' + (round ? '8 guests per round table' : '6 guests per 6-ft table') + '. We confirm exact quantities, availability, and pricing when we quote.';
+    if (tent.checked && guests > 60) text = 'Our tent seats about 60 guests. For a bigger group, text us and we\'ll work out options. ' + text;
+    else if (guests >= 85) text = 'For an event this size, text us early so we can confirm availability. ' + text;
+    note.textContent = text;
+  }
+
+  function prefillForm() {
+    document.querySelectorAll('[data-item]').forEach(cb => {
+      cb.checked = false;
+      const q = cb.closest('.item-row').querySelector('.qty');
+      q.disabled = true; q.value = '';
+    });
+    const set = (name, n) => {
+      const q = document.querySelector('input[name="' + name + '"]');
+      const cb = q.closest('.item-row').querySelector('[data-item]');
+      cb.checked = true; q.disabled = false; q.value = n;
+    };
+    set('White Resin Chairs (qty)', plan.chairs);
+    set(plan.round ? '60in Round Tables (qty)' : '6-ft Banquet Tables (qty)', plan.tables);
+    if (plan.tent) set('32x20 Tent (qty)', 1);
+    document.getElementById('guests').value = plan.guests;
+    document.querySelector('.items').classList.remove('invalid');
+    openModal();
+  }
+
+  range.addEventListener('input', calc);
+  tent.addEventListener('change', calc);
+  styleRadios.forEach(r => r.addEventListener('change', calc));
+  document.getElementById('plannerRequest').addEventListener('click', prefillForm);
+  calc();
+})();
 // Footer year
 document.getElementById('year').textContent = new Date().getFullYear();
 
