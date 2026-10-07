@@ -246,3 +246,29 @@ body.modal-open { overflow: hidden; }
   .footer-inner { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; }
 }
+/* Party planner */
+.planner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; max-width: 960px; margin: 0 auto; }
+.planner-controls, .planner-result { border-radius: var(--radius); padding: 1.8rem; }
+.planner-controls { background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow); }
+.planner-result { background: var(--navy-light); display: flex; flex-direction: column; }
+.planner-label { display: block; font-weight: 600; font-size: 0.88rem; margin: 0 0 0.4rem; }
+.planner-count { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.3rem; }
+.planner-count span { font-family: var(--font-head); font-weight: 800; font-size: 3.2rem; line-height: 1; color: var(--navy); }
+.planner-count small { color: var(--muted); font-size: 1rem; }
+#guestRange { width: 100%; height: 28px; accent-color: var(--navy); cursor: pointer; }
+.planner-scale { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.8rem; margin-bottom: 1.4rem; }
+.seg { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.3rem; }
+.seg label { position: relative; cursor: pointer; }
+.seg input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.seg span { display: inline-block; padding: 0.55rem 1.05rem; border: 1.5px solid #d4dae6; border-radius: 999px; font-weight: 600; font-size: 0.9rem; background: #fff; transition: all .15s ease; }
+.seg input:checked + span { background: var(--navy); border-color: var(--navy); color: #fff; }
+.seg input:focus-visible + span { outline: 2px solid var(--navy); outline-offset: 2px; }
+.planner-tent { font-size: 0.92rem; }
+.planner-result h3 { margin-bottom: 0.8rem; }
+.planner-list { list-style: none; margin: 0 0 1rem; padding: 0; }
+.planner-list li { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid rgba(13, 59, 122, 0.15); font-weight: 500; }
+.planner-list li strong { font-family: var(--font-head); font-size: 1.5rem; color: var(--navy); }
+.planner-note { font-size: 0.82rem; color: var(--muted); margin: 0 0 1.2rem; }
+.planner-result .btn { width: 100%; margin-top: auto; }
+.planner-text { text-align: center; margin-top: 0.8rem; font-weight: 600; font-size: 0.92rem; }
+@media (max-width: 960px) { .planner { grid-template-columns: 1fr; } }
