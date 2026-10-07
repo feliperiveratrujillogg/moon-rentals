@@ -97,6 +97,7 @@ p { margin: 0 0 1em; }
 .placeholder small { font-weight: 500; font-family: var(--font-body); color: #6b7a95; }
 .placeholder-hero { aspect-ratio: 4/3; box-shadow: var(--shadow); }
 .placeholder-map { aspect-ratio: 4/3; }
+.area-map { display: block; width: 100%; aspect-ratio: 4/3; border: 0; border-radius: var(--radius); box-shadow: var(--shadow); background: #e8edf5; }
 .card-img { aspect-ratio: 4/3; border-radius: var(--radius) var(--radius) 0 0; border-bottom: 0; }
 
 /* Sections */
@@ -106,19 +107,22 @@ p { margin: 0 0 1em; }
 .section-head .sub { margin-inline: auto; }
 
 .grid { display: grid; gap: 1.5rem; }
-.cards { grid-template-columns: repeat(4, 1fr); }
+.cards { grid-template-columns: repeat(3, 1fr); }
 .card {
   background: #fff; border: 1px solid var(--line); border-radius: var(--radius);
   overflow: hidden; transition: transform .18s ease, box-shadow .18s ease;
 }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+img.card-img, .card-wide img.card-img { display: block; width: 100%; height: auto; border: 0; object-fit: cover; }
+.card-wide img.card-img { height: 100%; aspect-ratio: auto; min-height: 240px; max-height: 340px; }
+.hero-img { display: block; width: 100%; height: auto; aspect-ratio: 16/10; object-fit: cover; border-radius: var(--radius); box-shadow: var(--shadow); }
 .card-body { padding: 1.25rem 1.35rem 1.4rem; }
 .card-body p { color: var(--muted); font-size: 0.95rem; margin-bottom: 0.8rem; }
 .price {
   display: inline-block; font-family: var(--font-head); font-size: 0.78rem; font-weight: 700;
   color: var(--navy); background: var(--navy-light); padding: 0.3rem 0.7rem; border-radius: 999px;
 }
-.card-wide { grid-column: span 4; display: grid; grid-template-columns: 1fr 1fr; }
+.card-wide { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; }
 .card-wide .card-img { border-radius: var(--radius) 0 0 var(--radius); border-right: 0; border-bottom: 2px dashed #b9c7dd; aspect-ratio: auto; min-height: 220px; }
 .card-wide .card-body { display: flex; flex-direction: column; justify-content: center; padding: 2rem; }
 
@@ -235,6 +239,7 @@ body.modal-open { overflow: hidden; }
   .cards { grid-template-columns: 1fr; }
   .card-wide { grid-column: span 1; grid-template-columns: 1fr; }
   .card-wide .card-img { border-radius: var(--radius) var(--radius) 0 0; border-right: 2px dashed #b9c7dd; border-bottom: 0; aspect-ratio: 4/3; }
+  .card-wide img.card-img { height: auto; max-height: none; aspect-ratio: 4/3; border-radius: var(--radius) var(--radius) 0 0; }
   .row { grid-template-columns: 1fr; gap: 0; }
   .modal { padding: 0; place-items: stretch; }
   .modal-dialog { max-height: 100vh; height: 100%; width: 100%; border-radius: 0; padding: 1.4rem; }
