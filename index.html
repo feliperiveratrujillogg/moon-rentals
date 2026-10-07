@@ -32,7 +32,7 @@
       <nav class="nav-links" id="navLinks">
         <a href="#rentals">Rentals</a>
         <a href="#how">How It Works</a>
-        <a href="#area">Service Area</a>
+        <a href="#planner">Plan Your Party</a>
         <a href="sms:+19124776959" class="nav-phone">Text (912) 477-6959</a>
         <button type="button" class="btn btn-primary btn-sm" data-modal-open>Request Services</button>
       </nav>
@@ -140,16 +140,35 @@
       </div>
     </section>
 
-    <!-- SERVICE AREA -->
-    <section class="section" id="area">
-      <div class="container area-inner">
-        <div>
-          <p class="eyebrow">Where We Go</p>
-          <h2>Serving Savannah &amp; surrounding areas</h2>
-          <p class="sub">Based in Savannah, GA. We deliver throughout the Savannah area including Pooler, Richmond Hill, Rincon, Garden City, Port Wentworth, Tybee Island, Bloomingdale, and nearby communities. Not sure if we cover your location? Just ask.</p>
-          <button type="button" class="btn btn-primary" data-modal-open>Check Availability</button>
+    <!-- PARTY PLANNER -->
+    <section class="section" id="planner">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Plan Your Party</p>
+          <h2>How much do you need?</h2>
+          <p class="sub">Slide to your guest count and we'll suggest a setup, then send it to us as a request. We deliver throughout Savannah, Pooler, Richmond Hill, Rincon, Garden City, Port Wentworth, Tybee Island, Bloomingdale, and nearby communities.</p>
         </div>
-        <iframe class="area-map" title="Map of Savannah, Georgia service area" src="https://www.openstreetmap.org/export/embed.html?bbox=-81.45%2C31.85%2C-80.75%2C32.35&amp;layer=mapnik&amp;marker=32.0809%2C-81.0912" loading="lazy" allowfullscreen></iframe>
+        <div class="planner">
+          <div class="planner-controls">
+            <label for="guestRange" class="planner-label">How many guests?</label>
+            <div class="planner-count"><span id="guestOut">50</span><small>guests</small></div>
+            <input id="guestRange" type="range" min="10" max="100" step="5" value="50">
+            <div class="planner-scale"><span>10</span><span>100</span></div>
+            <p class="planner-label" id="styleLbl">Table style</p>
+            <div class="seg" role="radiogroup" aria-labelledby="styleLbl">
+              <label><input type="radio" name="tableStyle" value="round" checked><span>60" round</span></label>
+              <label><input type="radio" name="tableStyle" value="rect"><span>6-ft rectangular</span></label>
+            </div>
+            <label class="check planner-tent"><input type="checkbox" id="plannerTent" checked> Add a 32 × 20 ft tent for shade &amp; cover</label>
+          </div>
+          <div class="planner-result" aria-live="polite">
+            <h3>Suggested setup</h3>
+            <ul class="planner-list" id="plannerList"></ul>
+            <p class="planner-note" id="plannerNote"></p>
+            <button type="button" class="btn btn-primary" id="plannerRequest">Request this setup</button>
+            <a href="sms:+19124776959" class="planner-text">or text (912) 477-6959</a>
+          </div>
+        </div>
       </div>
     </section>
 
