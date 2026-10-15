@@ -246,6 +246,7 @@ body.modal-open { overflow: hidden; }
   .footer-inner { grid-template-columns: 1fr; }
   .hero-actions .btn { width: 100%; }
 }
+
 /* Party planner */
 .planner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.5rem; max-width: 960px; margin: 0 auto; }
 .planner-controls, .planner-result { border-radius: var(--radius); padding: 1.8rem; }
@@ -272,3 +273,94 @@ body.modal-open { overflow: hidden; }
 .planner-result .btn { width: 100%; margin-top: auto; }
 .planner-text { text-align: center; margin-top: 0.8rem; font-weight: 600; font-size: 0.92rem; }
 @media (max-width: 960px) { .planner { grid-template-columns: 1fr; } }
+
+/* ───── Decoration Services ───── */
+.section-decor { padding: 4.5rem 0 3.5rem; }
+.section-decor .section-head { margin-bottom: 1.8rem; }
+
+.marquee {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin: 2rem 0 2.5rem;
+  padding: 0.5rem 0;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee-track {
+  display: flex;
+  gap: 1.2rem;
+  width: max-content;
+  animation: marquee-scroll 48s linear infinite;
+  will-change: transform;
+}
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee-item {
+  flex: 0 0 auto;
+  width: 280px;
+  height: 350px;
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(10, 25, 60, 0.12);
+  background: #eef2f8;
+}
+.marquee-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none; }
+  .marquee { -webkit-mask-image: none; mask-image: none; overflow-x: auto; }
+}
+
+.decor-foot {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.6rem;
+  align-items: center;
+  padding: 1.4rem 1.6rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 18px rgba(10, 25, 60, 0.06);
+}
+.decor-start { font-size: 1.4rem; margin: 0 0 0.3rem; color: var(--navy); }
+.decor-start strong { color: var(--navy); }
+.decor-start-sub { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+.decor-cta { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: flex-end; }
+
+/* "New" chip inside the inquiry form */
+.chip-new {
+  display: inline-block;
+  background: #ffd54a;
+  color: #4a3600;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  margin-left: 0.4rem;
+  vertical-align: middle;
+}
+.item-row-decor { align-items: center; }
+.item-row-decor .qty-note {
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding-left: 0.6rem;
+}
+.decor-field { margin-top: 1rem; }
+
+@media (max-width: 720px) {
+  .marquee-item { width: 220px; height: 275px; }
+  .decor-foot { grid-template-columns: 1fr; text-align: center; }
+  .decor-cta { justify-content: center; }
+  .item-row-decor { flex-direction: column; align-items: flex-start; gap: 0.3rem; }
+  .item-row-decor .qty-note { padding-left: 0; }
+}
