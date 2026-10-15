@@ -31,6 +31,7 @@
       </a>
       <nav class="nav-links" id="navLinks">
         <a href="#rentals">Rentals</a>
+        <a href="#decoration">Decoration</a>
         <a href="#how">How It Works</a>
         <a href="#planner">Plan Your Party</a>
         <a href="sms:+19124776959" class="nav-phone">Text (912) 477-6959</a>
@@ -50,7 +51,7 @@
         <div class="hero-copy">
           <p class="eyebrow">Savannah, GA &amp; Surrounding Areas</p>
           <h1>Tables, chairs &amp; tents for your next event.</h1>
-          <p class="lead">Clean, reliable party rentals delivered and set up on time. Weddings, birthdays, graduations, church events, backyard parties — we've got you covered.</p>
+          <p class="lead">Rentals &amp; decoration delivered and set up on time. Weddings, birthdays, graduations, church events, backyard parties — we've got you covered.</p>
           <div class="hero-actions">
             <button type="button" class="btn btn-primary" data-modal-open>Request Services</button>
             <a href="sms:+19124776959" class="btn btn-outline">Text (912) 477-6959</a>
@@ -109,6 +110,42 @@
               <span class="price">Pricing on request</span>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- DECORATION SERVICES -->
+    <section class="section section-decor" id="decoration">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">New — Decoration Services</p>
+          <h2>Let us style your event</h2>
+          <p class="sub">Tables and chairs are the start — we can also design the whole vibe. Balloon arches, backdrops, centerpieces, themed setups for birthdays, graduations, baby showers, and more. Delivered and installed by our team.</p>
+        </div>
+
+        <div class="marquee" aria-label="Balloon decoration gallery">
+          <div class="marquee-track">
+            <figure class="marquee-item"><img src="assets/decor-1.jpg" alt="Pastel pink and cream balloon arch with Happy Birthday neon sign" loading="lazy" width="800" height="1000"></figure>
+            <figure class="marquee-item"><img src="assets/decor-2.jpg" alt="Black, gold, and silver balloon arch with Happy Birthday neon sign" loading="lazy" width="800" height="1000"></figure>
+            <figure class="marquee-item"><img src="assets/decor-3.jpg" alt="Blue, yellow, and white Italian lemon themed balloon decoration with gold 30 numbers" loading="lazy" width="800" height="1000"></figure>
+            <figure class="marquee-item"><img src="assets/decor-4.jpg" alt="Blue, black, and silver racing themed balloon arch with checker pattern" loading="lazy" width="800" height="1000"></figure>
+            <!-- duplicate for seamless loop -->
+            <figure class="marquee-item" aria-hidden="true"><img src="assets/decor-1.jpg" alt="" loading="lazy" width="800" height="1000"></figure>
+            <figure class="marquee-item" aria-hidden="true"><img src="assets/decor-2.jpg" alt="" loading="lazy" width="800" height="1000"></figure>
+            <figure class="marquee-item" aria-hidden="true"><img src="assets/decor-3.jpg" alt="" loading="lazy" width="800" height="1000"></figure>
+            <figure class="marquee-item" aria-hidden="true"><img src="assets/decor-4.jpg" alt="" loading="lazy" width="800" height="1000"></figure>
+          </div>
+        </div>
+
+        <div class="decor-foot">
+          <div class="decor-pricing">
+            <p class="decor-start"><strong>Starting at $150</strong></p>
+            <p class="decor-start-sub">Custom themes quoted based on size, materials, and setup. Tell us the vibe — colors, theme, size — and we'll put together a quote.</p>
+          </div>
+          <div class="decor-cta">
+            <button type="button" class="btn btn-primary" data-modal-open data-prefill-decor>Request Decoration</button>
+            <a href="sms:+19124776959" class="btn btn-outline">Text (912) 477-6959</a>
+          </div>
         </div>
       </div>
     </section>
@@ -190,7 +227,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <img src="assets/logo-white.png" alt="Moon Rentals" class="footer-logo">
-        <p>Tables • Chairs • Tents • Canopies • More</p>
+        <p>Tables • Chairs • Tents • Decoration • More</p>
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
@@ -206,6 +243,7 @@
       <div class="footer-col">
         <h4>Quick Links</h4>
         <p><a href="#rentals">Rentals</a></p>
+        <p><a href="#decoration">Decoration</a></p>
         <p><a href="#how">How It Works</a></p>
         <p><button type="button" class="link-btn" data-modal-open>Request Services</button></p>
       </div>
@@ -306,7 +344,16 @@
             <label class="check"><input type="checkbox" data-item> 32 × 20 ft tent</label>
             <input type="number" name="32x20 Tent (qty)" min="1" placeholder="Qty" class="qty" disabled>
           </div>
+          <div class="item-row item-row-decor">
+            <label class="check"><input type="checkbox" id="decorCheck" name="Decoration Services" value="Yes"> Decoration services <span class="chip-new">New</span></label>
+            <span class="qty-note">Balloon arches, backdrops, centerpieces, themed setups</span>
+          </div>
         </fieldset>
+
+        <div class="field decor-field" id="decorFieldWrap" hidden>
+          <label for="decorNotes">Tell us the vibe — theme, colors, size</label>
+          <textarea id="decorNotes" name="Decoration Vibe" rows="3" placeholder="e.g. Pink &amp; gold princess theme, 2 arches + centerpieces for 6 tables"></textarea>
+        </div>
 
         <div class="row">
           <div class="field">
