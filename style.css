@@ -82,14 +82,18 @@ p { margin: 0 0 1em; }
 /* Hero */
 .hero {
   position: relative;
-  isolation: isolate;
   overflow: hidden;
   background: var(--navy-dark);
-  padding: 5.5rem 0 5rem;
-  min-height: clamp(500px, 68vh, 700px);
+  padding: 3.5rem 0;
+  /* Roughly the shape of the source footage, capped so it never dominates */
+  aspect-ratio: 16 / 9;
+  min-height: 430px;
+  max-height: 600px;
   display: flex;
   align-items: center;
 }
+/* NOTE: these layers use positive z-index on purpose. A negative z-index on a
+   <video> makes iOS Safari paint it over the hero text until a repaint. */
 .hero-video {
   position: absolute;
   inset: 0;
@@ -97,20 +101,24 @@ p { margin: 0 0 1em; }
   height: 100%;
   object-fit: cover;
   object-position: center 45%;
-  z-index: -2;
+  z-index: 0;
   pointer-events: none;
 }
 .hero-scrim {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 1;
   background:
     linear-gradient(180deg,
       rgba(7, 32, 68, 0.80) 0%,
       rgba(7, 32, 68, 0.62) 42%,
       rgba(7, 32, 68, 0.86) 100%);
 }
-.hero-inner { width: min(1140px, 100% - 2rem); }
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: min(1140px, 100% - 2rem);
+}
 .hero-copy { max-width: 680px; }
 .hero h1 { color: #fff; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35); }
 .hero .lead { color: #e4ecf8; max-width: 580px; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3); }
@@ -127,7 +135,8 @@ p { margin: 0 0 1em; }
   background: rgba(255, 255, 255, 0.10);
   color: #fff;
   border-color: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
 }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.2); border-color: #fff; }
 
@@ -285,8 +294,15 @@ body.modal-open { overflow: hidden; }
   .nav-links a { padding: 0.8rem 0.4rem; border-bottom: 1px solid var(--line); }
   .nav-links .btn { margin-top: 0.8rem; border-bottom: 0; }
   .brand-logo { height: 50px; }
-  .hero { padding: 3.5rem 0 3.5rem; min-height: clamp(440px, 74vh, 560px); }
+  /* On phones let the copy set the height — a 16:9 box would be far too short */
+  .hero {
+    aspect-ratio: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 2.75rem 0 3rem;
+  }
   .hero h1 { font-size: clamp(1.9rem, 8vw, 2.4rem); }
+  .hero .lead { font-size: 1.02rem; }
   .section { padding: 3.5rem 0; }
   .cards { grid-template-columns: 1fr; }
   .card-wide { grid-column: span 1; grid-template-columns: 1fr; }
