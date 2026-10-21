@@ -100,9 +100,22 @@
     <!-- HERO -->
     <section class="hero">
       <video class="hero-video" autoplay muted loop playsinline preload="metadata"
-             poster="assets/hero-poster.jpg" aria-hidden="true" tabindex="-1">
-        <source src="assets/hero.mp4" type="video/mp4">
+             poster="assets/hero-poster.jpg" aria-hidden="true" tabindex="-1"
+             data-wide="assets/hero.mp4" data-wide-poster="assets/hero-poster.jpg"
+             data-narrow="assets/hero-mobile.mp4" data-narrow-poster="assets/hero-poster-mobile.jpg">
       </video>
+      <script>
+        /* Pick the hero clip before first paint. A `media` attribute on <source>
+           is not reliably honoured inside <video>, and two <video> elements
+           toggled with CSS would download both files. */
+        (function () {
+          var v = document.querySelector('.hero-video');
+          if (!v) return;
+          var narrow = window.matchMedia('(max-width: 720px)').matches;
+          v.poster = narrow ? v.dataset.narrowPoster : v.dataset.widePoster;
+          v.src = narrow ? v.dataset.narrow : v.dataset.wide;
+        })();
+      </script>
       <div class="hero-scrim" aria-hidden="true"></div>
       <div class="container hero-inner">
         <div class="hero-copy">

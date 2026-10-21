@@ -147,6 +147,9 @@ p { margin: 0 0 1em; }
     background: var(--navy-dark) url("assets/hero-poster.jpg") center 45% / cover no-repeat;
   }
 }
+@media (prefers-reduced-motion: reduce) and (max-width: 720px) {
+  .hero { background-image: url("assets/hero-poster-mobile.jpg"); }
+}
 
 /* Placeholders */
 .placeholder {
