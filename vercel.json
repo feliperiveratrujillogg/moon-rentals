@@ -22,5 +22,6 @@
       "image/webp"
     ],
     "minimumCacheTTL": 2678400
-  }
+  },
+  "cleanUrls": true
 }
