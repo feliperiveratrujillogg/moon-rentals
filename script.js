@@ -92,7 +92,9 @@ form.addEventListener('submit', async (e) => {
   // Validate required fields
   let valid = true;
   form.querySelectorAll('[required]').forEach(el => {
-    const bad = !el.value || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value));
+    const bad = !el.value
+      || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value))
+      || (el.type === 'tel' && el.value.replace(/\D/g, '').length < 10);
     el.classList.toggle('invalid', bad);
     if (bad) valid = false;
   });

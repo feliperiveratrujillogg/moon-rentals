@@ -348,9 +348,14 @@
             <input id="name" name="Name" type="text" required autocomplete="name">
           </div>
           <div class="field">
-            <label for="email">Email *</label>
-            <input id="email" name="Email" type="email" required autocomplete="email">
+            <label for="phone">Phone *</label>
+            <input id="phone" name="Phone" type="tel" required autocomplete="tel" inputmode="tel" placeholder="(912) 555-0123">
           </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email *</label>
+          <input id="email" name="Email" type="email" required autocomplete="email">
         </div>
 
         <div class="row">
@@ -454,7 +459,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-lg" id="submitBtn">Send Request</button>
-        <p class="form-note">We&rsquo;ll reply by email &mdash; usually the same day. Want a text back instead? Use the chat bubble in the corner of the page.</p>
+        <p class="form-note">We&rsquo;ll get back to you by phone or email &mdash; usually the same day.</p>
         <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
       </form>
     </div>
