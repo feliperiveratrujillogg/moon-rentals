@@ -126,7 +126,7 @@ form.addEventListener('submit', async (e) => {
     form.reset();
     form.querySelectorAll('.qty').forEach(q => { q.disabled = true; });
     msg.className = 'form-msg ok';
-    msg.textContent = "Request sent! We'll get back to you shortly with availability and pricing.";
+    msg.innerHTML = 'Request sent! We&rsquo;ll get back to you shortly with availability and pricing. Want a faster reply? <a href="sms:+19124776959">Text us at (912) 477-6959</a>.';
   } catch (err) {
     msg.className = 'form-msg err';
     msg.textContent = 'Something went wrong. Please text us at (912) 477-6959.';
